@@ -11,10 +11,14 @@ export default class Window extends Component {
     }
   }
   render () {
-    const {x, y, height, width, windowID} = this.props
+    const {x, y, height, width, windowID, isFocused} = this.props
     console.log(this.state.app)
     return (
-      <div className='window' style={{left: x, top: y, height, width}}>
+      <div
+        className='window'
+        style={{left: x, top: y, height, width, zIndex: isFocused ? 1 : 0}}
+        onClick={() => this.props.focusWindow(windowID)}
+      >
         <div className='windowDecorations'>
           <p className='windowTitle'>{this.state.app.title ? this.state.app.title : windowID}</p>
           <button onClick={() => this.props.discardWindow(windowID)}>x</button>

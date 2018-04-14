@@ -13,3 +13,11 @@ export const discardWindow = (windowID) => {
     windowID
   }
 }
+
+export const focusWindow = (windowID) => {
+  return {
+    reducer: 'WM',
+    type: 'FOCUS',
+    windowID
+  }
+}

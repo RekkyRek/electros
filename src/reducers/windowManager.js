@@ -8,6 +8,8 @@ const windowManager = (state = initState, action) => {
       return { windows: createWindow({...state.windows}, action) }
     case 'DISCARD':
       return { windows: discardWindow({...state.windows}, action) }
+    case 'FOCUS':
+      return { ...state, currentFocus: action.windowID }
     default:
       return state
   }
@@ -17,8 +19,8 @@ const createWindow = (windows, action) => {
   const id = Math.random().toString(36).substr(2, 5)
   const newWindow = {
     windowID: id,
-    x: 32 + (16 * Object.keys(windows).length),
-    y: 32 + (16 * Object.keys(windows).length),
+    x: 16 + (16 * Object.keys(windows).length),
+    y: 16 + (16 * Object.keys(windows).length),
     height: 200,
     width: 300,
     appPath: action.appPath

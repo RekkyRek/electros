@@ -8,7 +8,13 @@ export default class WindowManager extends Component {
     return (
       <div className='windowManager'>
         {Object.keys(this.props.windows).map(windowID => {
-          return <Window key={windowID} discardWindow={this.props.discardWindow} {...this.props.windows[windowID]} />
+          return <Window
+            key={windowID}
+            isFocused={this.props.currentFocus === windowID}
+            focusWindow={this.props.focusWindow}
+            discardWindow={this.props.discardWindow}
+            {...this.props.windows[windowID]}
+          />
         })}
       </div>
     )
