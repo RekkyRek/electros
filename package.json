@@ -4,7 +4,9 @@
   "description": "A neat and simple boilerplate for React, Redux, React Router and Webpack.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config ./webpack/dev.config.js --host 0.0.0.0 --port 3000"
+    "dev": "concurrently -k \"npm run server\" \"npm run start\" ",
+    "server": "webpack-dev-server --color --config webpack/dev.config.js --host 0.0.0.0 --port 3000",
+    "start": "NODE_ENV=development ELECTROS_APPS_LOCATION=/anis/electros/apps electron src/app.js"
   },
   "repository": {
     "type": "git",
@@ -23,26 +25,28 @@
   },
   "homepage": "https://github.com/rekkyrek/mobooru#readme",
   "devDependencies": {
-    "path": "^0.12.7",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "concurrently": "^3.5.1",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
+    "electron-devtools-installer": "^2.2.3",
     "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.8.3",
+    "path": "^0.12.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "sass-loader": "^7.0.1",
-    "style-loader": "^0.20.3"
+    "style-loader": "^0.20.3",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.0"
   },
-  "dependencies": {
-
-  }
+  "dependencies": {}
 }

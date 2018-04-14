@@ -38,7 +38,7 @@ module.exports = {
     HtmlWebpackPluginConfig,
     new CopyWebpackPlugin([
       {
-        from: './src/res',
+        from: './src/res/assets',
         to: 'res'
       }
     ])

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import numbers from './numbers'
+import windowManager from './windowManager'
 
-const numbersApp = combineReducers({
-  numbers
+const electrosApp = combineReducers({
+  windowManager
 })
 
-export default numbersApp
+export default electrosApp
