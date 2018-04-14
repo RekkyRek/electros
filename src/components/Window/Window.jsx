@@ -60,7 +60,6 @@ export default class Window extends Component {
 
   render () {
     const {x, y, height, width, windowID, isFocused} = this.props.window
-    console.log({x, y, height, width, windowID, isFocused})
     return (
       <div
         className='window'
