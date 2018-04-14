@@ -38,8 +38,10 @@ const discardWindow = (windows, action) => {
 }
 
 const moveWindow = (windows, action) => {
-  windows[action.windowID].x += action.x
-  windows[action.windowID].y += action.y
+  let newWindow = {...windows[action.windowID]}
+  newWindow.x += action.x
+  newWindow.y += action.y
+  windows[action.windowID] = newWindow
   return windows
 }
 

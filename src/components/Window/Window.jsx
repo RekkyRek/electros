@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import shallowCompare from 'react-addons-shallow-compare' // ES6
 
 export default class Window extends Component {
   constructor (props) {
@@ -38,18 +37,15 @@ export default class Window extends Component {
   }
 
   compareObjects (o1, o2) {
-    console.log('=============' + this.props.window.windowID + '=============')
-    for (var p in o1) {
+    for (let p in o1) {
       if (o1.hasOwnProperty(p)) {
-        console.log(o1[p], o2[p], o1[p] !== o2[p])
         if (o1[p] !== o2[p]) {
           return false
         }
       }
     }
-    for (var p in o2) {
+    for (let p in o2) {
       if (o2.hasOwnProperty(p)) {
-        console.log(o1[p], o2[p], o1[p] !== o2[p])
         if (o1[p] !== o2[p]) {
           return false
         }
@@ -59,16 +55,16 @@ export default class Window extends Component {
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    return this.compareObjects(nextProps.window, this.props.window)
+    return !this.compareObjects(nextProps.window, this.props.window)
   }
 
   render () {
     const {x, y, height, width, windowID, isFocused} = this.props.window
-    console.log(`${windowID} moved`)
+    console.log({x, y, height, width, windowID, isFocused})
     return (
       <div
         className='window'
-        style={{left: x, top: y, height, width, zIndex: isFocused ? 1 : 0}}
+        style={{zIndex: isFocused ? 1 : 0, left: x, top: y, height, width}}
         onClick={() => this.props.focusWindow(windowID)}
       >
         <div className='windowDecorations' ref='decorations'>
