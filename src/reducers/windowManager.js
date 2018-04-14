@@ -5,11 +5,13 @@ const windowManager = (state = initState, action) => {
   if (action.reducer !== 'WM') { return state }
   switch (action.type) {
     case 'CREATE':
-      return { windows: createWindow({...state.windows}, action) }
+      return { ...state, windows: createWindow({...state.windows}, action) }
     case 'DISCARD':
-      return { windows: discardWindow({...state.windows}, action) }
+      return { ...state, windows: discardWindow({...state.windows}, action) }
     case 'FOCUS':
       return { ...state, currentFocus: action.windowID }
+    case 'MOVE':
+      return { ...state, windows: moveWindow({...state.windows}, action), currentFocus: action.windowID }
     default:
       return state
   }
@@ -33,6 +35,12 @@ const createWindow = (windows, action) => {
 const discardWindow = (windows, action) => {
   delete windows[action.windowID]
   console.log('deleteWindow', windows)
+  return windows
+}
+
+const moveWindow = (windows, action) => {
+  windows[action.windowID].x += action.x
+  windows[action.windowID].y += action.y
   return windows
 }
 

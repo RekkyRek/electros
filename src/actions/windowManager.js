@@ -21,3 +21,13 @@ export const focusWindow = (windowID) => {
     windowID
   }
 }
+
+export const moveWindow = (windowID, x, y) => {
+  return {
+    reducer: 'WM',
+    type: 'MOVE',
+    windowID,
+    x,
+    y
+  }
+}
