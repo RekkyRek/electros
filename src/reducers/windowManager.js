@@ -17,8 +17,8 @@ const createWindow = (windows, action) => {
   const id = Math.random().toString(36).substr(2, 5)
   const newWindow = {
     windowID: id,
-    x: 0 + (16 * Object.keys(windows).length),
-    y: 100,
+    x: 32 + (28 * Object.keys(windows).length),
+    y: 32 + (28 * Object.keys(windows).length),
     height: 200,
     width: 300,
     appPath: action.appPath
