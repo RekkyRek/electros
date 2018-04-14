@@ -48,5 +48,7 @@
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-addons-shallow-compare": "^15.6.2"
+  }
 }

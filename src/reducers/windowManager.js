@@ -1,7 +1,6 @@
 const initState = require('../consts/windowManagerState.js')
 
 const windowManager = (state = initState, action) => {
-  console.log(action)
   if (action.reducer !== 'WM') { return state }
   switch (action.type) {
     case 'CREATE':

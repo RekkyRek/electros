@@ -4,7 +4,6 @@ import Window from '../Window/Window.jsx'
 
 export default class WindowManager extends Component {
   render () {
-    console.log('windows', Object.keys(this.props.windows))
     return (
       <div className='windowManager'>
         {Object.keys(this.props.windows).map(windowID => {
@@ -14,7 +13,7 @@ export default class WindowManager extends Component {
             focusWindow={this.props.focusWindow}
             moveWindow={this.props.moveWindow}
             discardWindow={this.props.discardWindow}
-            {...this.props.windows[windowID]}
+            window={this.props.windows[windowID]}
           />
         })}
       </div>

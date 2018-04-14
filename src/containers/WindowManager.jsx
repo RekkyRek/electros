@@ -4,7 +4,6 @@ import WindowManager from '../components/Window/WindowManager.jsx'
 import { createWindow, discardWindow, focusWindow, moveWindow } from '../actions/windowManager.js'
 
 const mapStateToProps = state => {
-  console.log('mstp', state)
   return {
     windows: state.windowManager.windows,
     currentFocus: state.windowManager.currentFocus
