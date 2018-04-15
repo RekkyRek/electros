@@ -2,3 +2,41 @@
   backdrop-filter: blur(24px)
   background: rgba(0,0,0,0.66)
   flex: 1
+  display: flex
+  flex-direction: column
+  width: 100%
+  height: 100%
+  .terminalOutput
+    flex: 1
+    margin: 4px
+    overflow-y: scroll
+    color: #eeeeee
+    div
+      margin: 4px
+    .terminalPWD
+      color: #adadad
+    p
+      font-size: 14px
+      margin: 0px
+      word-wrap: break-word
+      word-break: break-word
+      white-space: pre-wrap
+  .terminalInput
+    border: none
+    padding: 4px
+    background: rgba(0,0,0,0.2)
+    color: #eeeeee
+    display: flex
+    transition: background 0.1s
+    p
+      margin: 0px
+      font-size: 14px
+    input
+      border: none
+      background: transparent
+      flex: 1
+      min-width: 0px
+      margin-left: 6px
+      color: #eeeeee
+      &:focus
+        outline: none

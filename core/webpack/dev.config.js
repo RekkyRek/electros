@@ -12,7 +12,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 })
 
 module.exports = {
-  target: 'web',
+  target: 'electron',
   devtool: '#source-map',
   context: path.join(__dirname, '..'),
   entry: './src/index.js',

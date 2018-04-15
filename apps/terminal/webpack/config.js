@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  target: 'web',
+  target: 'electron',
   context: path.join(__dirname, '..'),
   entry: './src/index.js',
   output: {
