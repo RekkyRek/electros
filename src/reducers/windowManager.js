@@ -11,6 +11,8 @@ const windowManager = (state = initState, action) => {
       return { ...state, currentFocus: action.windowID }
     case 'MOVE':
       return { ...state, windows: moveWindow({...state.windows}, action), currentFocus: action.windowID }
+    case 'RESIZE':
+      return { ...state, windows: resizeWindow({...state.windows}, action), currentFocus: action.windowID }
     default:
       return state
   }
@@ -41,6 +43,14 @@ const moveWindow = (windows, action) => {
   let newWindow = {...windows[action.windowID]}
   newWindow.x += action.x
   newWindow.y += action.y
+  windows[action.windowID] = newWindow
+  return windows
+}
+
+const resizeWindow = (windows, action) => {
+  let newWindow = {...windows[action.windowID]}
+  newWindow.width += action.x
+  newWindow.height += action.y
   windows[action.windowID] = newWindow
   return windows
 }

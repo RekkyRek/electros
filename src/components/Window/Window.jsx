@@ -10,30 +10,33 @@ export default class Window extends Component {
       app: new App()
     }
 
-    this.mouseUp = this.mouseUp.bind(this)
-    this.mouseDown = this.mouseDown.bind(this)
-    this.divMove = this.divMove.bind(this)
+    this.moveMouseUp = this.moveMouseUp.bind(this)
+    this.moveMouseDown = this.moveMouseDown.bind(this)
+    this.move = this.move.bind(this)
+
+    this.resizeMouseUp = this.resizeMouseUp.bind(this)
+    this.resizeMouseDown = this.resizeMouseDown.bind(this)
+    this.resize = this.resize.bind(this)
   }
 
-  mouseUp () {
-    window.removeEventListener('mousemove', this.divMove, true)
-  }
+  moveMouseUp () { window.removeEventListener('mousemove', this.move, true) }
+  moveMouseDown () { window.addEventListener('mousemove', this.move, true) }
+  move (e) { this.props.moveWindow(this.props.window.windowID, e.movementX, e.movementY) }
 
-  mouseDown () {
-    window.addEventListener('mousemove', this.divMove, true)
-  }
-
-  divMove (e) {
-    this.props.moveWindow(this.props.window.windowID, e.movementX, e.movementY)
-  }
+  resizeMouseUp () { window.removeEventListener('mousemove', this.resize, true) }
+  resizeMouseDown () { window.addEventListener('mousemove', this.resize, true) }
+  resize (e) { this.props.resizeWindow(this.props.window.windowID, e.movementX, e.movementY) }
 
   componentDidMount () {
-    this.refs.decorations.addEventListener('mousedown', this.mouseDown, false)
-    window.addEventListener('mouseup', this.mouseUp, false)
+    this.refs.decorations.addEventListener('mousedown', this.moveMouseDown, false)
+    this.refs.resize.addEventListener('mousedown', this.resizeMouseDown, false)
+    window.addEventListener('mouseup', this.moveMouseUp, false)
+    window.addEventListener('mouseup', this.resizeMouseUp, false)
   }
 
   componentWillUnmount () {
-    window.removeEventListener('mouseup', this.mouseUp)
+    window.removeEventListener('mouseup', this.moveMouseUp, false)
+    window.removeEventListener('mouseup', this.resizeMouseUp, false)
   }
 
   compareObjects (o1, o2) {
@@ -71,6 +74,7 @@ export default class Window extends Component {
           <button onClick={() => this.props.discardWindow(windowID)}>x</button>
         </div>
         {this.state.app ? <this.state.app.component /> : <p>loading content</p>}
+        <div className='windowResize' ref='resize' />
       </div>
     )
   }

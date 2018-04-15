@@ -31,3 +31,13 @@ export const moveWindow = (windowID, x, y) => {
     y
   }
 }
+
+export const resizeWindow = (windowID, x, y) => {
+  return {
+    reducer: 'WM',
+    type: 'RESIZE',
+    windowID,
+    x,
+    y
+  }
+}
