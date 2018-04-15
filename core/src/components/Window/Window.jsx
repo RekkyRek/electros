@@ -4,11 +4,15 @@ export default class Window extends Component {
   constructor (props) {
     super(props)
 
-    const App = require(`../../apps${this.props.window.appPath}`)
+    const App = __non_webpack_require__(`/anis/electros/apps${this.props.window.appPath}bundle`).default
+
+    console.log(App)
 
     this.state = {
       app: new App()
     }
+
+    console.log(this.state.app)
 
     this.moveMouseUp = this.moveMouseUp.bind(this)
     this.moveMouseDown = this.moveMouseDown.bind(this)
@@ -34,6 +38,7 @@ export default class Window extends Component {
     window.addEventListener('mouseup', this.resizeMouseUp, false)
 
     setTimeout(() => this.props.showWindow(this.props.window.windowID), 50)
+    this.state.app.mount(this.refs.appMount)
   }
 
   componentWillUnmount () {
@@ -89,9 +94,7 @@ export default class Window extends Component {
           <p className='windowTitle'>{this.state.app.title ? this.state.app.title : windowID}</p>
           <button className='windowClose' onClick={this.closeWindow.bind(this)} />
         </div>
-        <div className='windowContent'>
-          {this.state.app ? <this.state.app.component /> : <div />}
-        </div>
+        <div className='windowContent' ref={`appMount`} />
         <div className='windowResize' ref='resize' />
       </div>
     )
