@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './style/window.sass'
+
 class App {
   constructor () {
     this.component = AppComponent
@@ -13,8 +15,8 @@ class App {
 class AppComponent extends Component {
   render () {
     return (
-      <div>
-        <p>Imagine this is a terminal</p>
+      <div className='terminalWindow'>
+        <p />
       </div>
     )
   }

@@ -66,14 +66,16 @@ export default class Window extends Component {
     return (
       <div
         className='window'
-        style={{zIndex: isFocused ? 1 : 0, left: x, top: y, height, width}}
+        style={{zIndex: isFocused ? 3 : 2, left: x, top: y, height, width}}
         onClick={() => this.props.focusWindow(windowID)}
       >
         <div className='windowDecorations' ref='decorations'>
           <p className='windowTitle'>{this.state.app.title ? this.state.app.title : windowID}</p>
-          <button onClick={() => this.props.discardWindow(windowID)}>x</button>
+          <button className='windowClose' onClick={() => this.props.discardWindow(windowID)} />
         </div>
-        {this.state.app ? <this.state.app.component /> : <p>loading content</p>}
+        <div className='windowContent'>
+          {this.state.app ? <this.state.app.component /> : <div />}
+        </div>
         <div className='windowResize' ref='resize' />
       </div>
     )

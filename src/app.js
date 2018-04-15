@@ -61,8 +61,13 @@ function createWindow () {
     height: 600,
     minHeight: 600,
     minWidth: 590,
-    show: false
+    show: false,
+    webPreferences: {
+      experimentalFeatures: true
+    }
   })
+
+  mainWindow.setMenu(null)
 
   if (process.env.NODE_ENV === 'development') {
     mainWindow.loadURL(url.format({
@@ -94,6 +99,14 @@ function createWindow () {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
     mainWindow.focus()
+
+    const electronLocalshortcut = require('electron-localshortcut')
+    electronLocalshortcut.register(mainWindow, 'F12', () => {
+      mainWindow.webContents.openDevTools()
+    })
+    electronLocalshortcut.register(mainWindow, 'F5', () => {
+      mainWindow.webContents.reload()
+    })
 
     // measure startup time
     console.timeEnd('startup'); //eslint-disable-line

@@ -1,15 +1,37 @@
 .window
   position: absolute
-  border: 1px solid #efefef
-  background: #ffffff
   user-select: none
+  display: flex
+  flex-direction: column
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2)
   .windowDecorations
     display: flex
-    background: #efefef
+    align-items: center
+    backdrop-filter: blur(24px)
+    background: rgba(255,255,255,0.33)
+    z-index: 1
     user-select: none
     .windowTitle
-      margin: 0px
+      margin: 6px
       flex: 1
+      font-size: 14px
+      color: #333
+      cursor: default
+    button
+      background: #aaaaaa
+      border: none
+      height: 16px
+      width: 16px
+      margin-right: 8px
+      border-radius: 8px
+      cursor: pointer
+      transition: opacity 0.1s
+      &:hover
+        opacity: 0.75
+      &:focus
+        outline: none
+      &.windowClose
+        background: #fc5652
   .windowResize
     position: absolute
     bottom: -6px
@@ -17,3 +39,7 @@
     height: 12px
     width: 12px
     cursor: se-resize
+  .windowContent
+    flex: 1
+    display: flex
+    
