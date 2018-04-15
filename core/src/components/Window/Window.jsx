@@ -4,7 +4,7 @@ export default class Window extends Component {
   constructor (props) {
     super(props)
 
-    const App = __non_webpack_require__(`/anis/electros/apps${this.props.window.appPath}bundle`).default
+    const App = __non_webpack_require__(`/anis/electros/apps${this.props.window.appPath}bundle`).default // eslint-disable-line
 
     console.log(App)
 
