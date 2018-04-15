@@ -16,7 +16,7 @@ class AppComponent extends Component {
   render () {
     return (
       <div className='terminalWindow'>
-        <p />
+        <input type='text' placeholder='$' />
       </div>
     )
   }

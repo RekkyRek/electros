@@ -5,6 +5,10 @@ const windowManager = (state = initState, action) => {
   switch (action.type) {
     case 'CREATE':
       return { ...state, windows: createWindow({...state.windows}, action) }
+    case 'SHOW':
+      return { ...state, windows: showWindow({...state.windows}, action) }
+    case 'HIDE':
+      return { ...state, windows: hideWindow({...state.windows}, action) }
     case 'DISCARD':
       return { ...state, windows: discardWindow({...state.windows}, action) }
     case 'FOCUS':
@@ -26,6 +30,7 @@ const createWindow = (windows, action) => {
     y: 16 + (16 * Object.keys(windows).length),
     height: 200,
     width: 300,
+    isVisable: false,
     appPath: action.appPath
   }
 
@@ -35,7 +40,20 @@ const createWindow = (windows, action) => {
 
 const discardWindow = (windows, action) => {
   delete windows[action.windowID]
-  console.log('deleteWindow', windows)
+  return windows
+}
+
+const showWindow = (windows, action) => {
+  let newWindow = {...windows[action.windowID]}
+  newWindow.isVisable = true
+  windows[action.windowID] = newWindow
+  return windows
+}
+
+const hideWindow = (windows, action) => {
+  let newWindow = {...windows[action.windowID]}
+  newWindow.isVisable = false
+  windows[action.windowID] = newWindow
   return windows
 }
 

@@ -41,3 +41,19 @@ export const resizeWindow = (windowID, x, y) => {
     y
   }
 }
+
+export const showWindow = (windowID) => {
+  return {
+    reducer: 'WM',
+    type: 'SHOW',
+    windowID
+  }
+}
+
+export const hideWindow = (windowID) => {
+  return {
+    reducer: 'WM',
+    type: 'HIDE',
+    windowID
+  }
+}

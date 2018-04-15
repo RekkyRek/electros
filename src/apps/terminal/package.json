@@ -10,5 +10,7 @@
     "electrOS"
   ],
   "author": "Hampus Lundqvist",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+  }
 }

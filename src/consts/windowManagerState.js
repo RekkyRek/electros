@@ -7,6 +7,7 @@ module.exports = {
       'y': 64,
       'height': 200,
       'width': 300,
+      'isVisable': false,
       'appPath': '/terminal/'
     }
   }

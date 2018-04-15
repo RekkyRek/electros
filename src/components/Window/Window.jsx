@@ -32,11 +32,18 @@ export default class Window extends Component {
     this.refs.resize.addEventListener('mousedown', this.resizeMouseDown, false)
     window.addEventListener('mouseup', this.moveMouseUp, false)
     window.addEventListener('mouseup', this.resizeMouseUp, false)
+
+    setTimeout(() => this.props.showWindow(this.props.window.windowID), 50)
   }
 
   componentWillUnmount () {
     window.removeEventListener('mouseup', this.moveMouseUp, false)
     window.removeEventListener('mouseup', this.resizeMouseUp, false)
+  }
+
+  closeWindow () {
+    this.props.hideWindow(this.props.window.windowID)
+    setTimeout(() => this.props.discardWindow(this.props.window.windowID), 200)
   }
 
   compareObjects (o1, o2) {
@@ -62,16 +69,25 @@ export default class Window extends Component {
   }
 
   render () {
-    const {x, y, height, width, windowID, isFocused} = this.props.window
+    const {x, y, height, width, windowID, isFocused, isVisable} = this.props.window
     return (
       <div
         className='window'
-        style={{zIndex: isFocused ? 3 : 2, left: x, top: y, height, width}}
+        style={{
+          zIndex: isFocused ? 3 : 2,
+          left: x,
+          top: y,
+          height,
+          width,
+          transform: isVisable ? 'scale(1)' : 'scale(0.8)',
+          opacity: isVisable ? 1 : 0
+        }}
         onClick={() => this.props.focusWindow(windowID)}
+        ref='window'
       >
         <div className='windowDecorations' ref='decorations'>
           <p className='windowTitle'>{this.state.app.title ? this.state.app.title : windowID}</p>
-          <button className='windowClose' onClick={() => this.props.discardWindow(windowID)} />
+          <button className='windowClose' onClick={this.closeWindow.bind(this)} />
         </div>
         <div className='windowContent'>
           {this.state.app ? <this.state.app.component /> : <div />}

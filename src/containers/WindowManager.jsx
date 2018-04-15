@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import WindowManager from '../components/Window/WindowManager.jsx'
 
-import { createWindow, discardWindow, focusWindow, moveWindow, resizeWindow } from '../actions/windowManager.js'
+import { createWindow, discardWindow, focusWindow, moveWindow, resizeWindow, showWindow, hideWindow } from '../actions/windowManager.js'
 
 const mapStateToProps = state => {
   return {
@@ -16,7 +16,9 @@ const mapDispatchToProps = dispatch => {
     discardWindow: windowID => dispatch(discardWindow(windowID)),
     focusWindow: windowID => dispatch(focusWindow(windowID)),
     moveWindow: (windowID, x, y) => dispatch(moveWindow(windowID, x, y)),
-    resizeWindow: (windowID, x, y) => dispatch(resizeWindow(windowID, x, y))
+    resizeWindow: (windowID, x, y) => dispatch(resizeWindow(windowID, x, y)),
+    showWindow: windowID => dispatch(showWindow(windowID)),
+    hideWindow: windowID => dispatch(hideWindow(windowID))
   }
 }
 

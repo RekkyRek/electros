@@ -47,7 +47,8 @@
     "sass-loader": "^7.0.1",
     "style-loader": "^0.20.3",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.0"
+    "webpack-dev-server": "^2.11.0",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "react-addons-shallow-compare": "^15.6.2"
