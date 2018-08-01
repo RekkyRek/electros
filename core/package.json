@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently -k \"npm run server\" \"npm run start\" ",
     "server": "webpack-dev-server --color --config webpack/dev.config.js --host 0.0.0.0 --port 3000",
-    "start": "NODE_ENV=development ELECTROS_APPS_LOCATION=/anis/electros/apps electron src/app.js"
+    "start": "NODE_ENV=development ELECTROS_APPS_LOCATION=/Volumes/BIG\\ NIGG/Code/electros/apps electron src/app.js"
   },
   "repository": {
     "type": "git",
@@ -43,8 +43,9 @@
     "webpack-dev-server": "^2.11.0"
   },
   "dependencies": {
-    "react-addons-shallow-compare": "^15.6.2",
+    "electron": "^2.0.5",
     "react": "^16.2.0",
+    "react-addons-shallow-compare": "^15.6.2",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",

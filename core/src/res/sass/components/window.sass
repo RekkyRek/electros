@@ -45,4 +45,26 @@
   .windowContent
     flex: 1
     display: flex
-    
+.dialog
+  width: 360px
+  left: calc(50vw - 360px / 2)
+  transform: translateY(-24px)
+  overflow: hidden
+  .windowTitle
+    text-align: center
+  .windowContent
+    backdrop-filter: blur(24px)
+    background: rgba(255,255,255,0.66)
+    padding: 12px
+    display: flex
+    flex-direction: column
+    .windowDialogMessage
+      overflow-wrap: break-word
+      max-width: calc(360px - 24px)
+    .windowDialogActions
+      margin-top: 12px
+      display: flex
+      justify-content: flex-end
+      button
+        background: rgba(0,0,0,0.05)
+        margin: 0px

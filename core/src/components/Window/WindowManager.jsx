@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Window from '../Window/Window.jsx'
+import Window from './Window.jsx'
 
 export default class WindowManager extends Component {
   render () {
@@ -9,6 +9,7 @@ export default class WindowManager extends Component {
         {Object.keys(this.props.windows).map(windowID => {
           return <Window
             key={windowID}
+            createWindow={this.props.createWindow}
             focusWindow={this.props.focusWindow}
             moveWindow={this.props.moveWindow}
             showWindow={this.props.showWindow}

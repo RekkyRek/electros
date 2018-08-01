@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import WindowManager from '../components/Window/WindowManager.jsx'
 
-import { createWindow, discardWindow, focusWindow, moveWindow, resizeWindow, showWindow, hideWindow } from '../actions/windowManager.js'
+import { createWindow, discardWindow, focusWindow, moveWindow, resizeWindow, showWindow, hideWindow } from '../actions/windowManager'
 
 const mapStateToProps = state => {
   return {

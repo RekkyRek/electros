@@ -4,6 +4,7 @@ body
   width: 100vw
   display: flex
   overflow: hidden
+  font-family: sans-serif
 #root
   flex: 1
   height: 100vh
@@ -12,6 +13,18 @@ body
 .router
   display: flex
   flex: 1
+.blurButton
+  background: rgba(255,255,255,0.66)
+  backdrop-filter: blur(24px)
+  border: none
+  padding: 12px
+  margin: 8px
+  transition: opacity 0.1s
+  cursor: pointer
+  &:hover
+    opacity: 0.8
+  &:focus
+    outline: none
 
 ::-webkit-scrollbar
   width: 8px

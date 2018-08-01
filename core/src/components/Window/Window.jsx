@@ -1,18 +1,10 @@
 import React, { Component } from 'react'
 
+import DialogWindow from './DialogWindow.jsx'
+
 export default class Window extends Component {
   constructor (props) {
     super(props)
-
-    const App = __non_webpack_require__(`/anis/electros/apps${this.props.window.appPath}bundle`).default // eslint-disable-line
-
-    console.log(App)
-
-    this.state = {
-      app: new App()
-    }
-
-    console.log(this.state.app)
 
     this.moveMouseUp = this.moveMouseUp.bind(this)
     this.moveMouseDown = this.moveMouseDown.bind(this)
@@ -21,6 +13,18 @@ export default class Window extends Component {
     this.resizeMouseUp = this.resizeMouseUp.bind(this)
     this.resizeMouseDown = this.resizeMouseDown.bind(this)
     this.resize = this.resize.bind(this)
+
+    let App
+
+    try {
+      App = __non_webpack_require__(`/Volumes/BIG NIGG/Code/electros/apps${this.props.window.appPath}bundle/index.js`).default // eslint-disable-line
+    } catch (e) {
+      App = {type: 'error', title: 'Critical Error', message: e, buttons: [{name: 'Close', action: this.closeWindow.bind(this)}]}
+    }
+
+    this.state = {
+      app: App.type === 'error' ? App : new App()
+    }
   }
 
   moveMouseUp () { window.removeEventListener('mousemove', this.move, true) }
@@ -32,13 +36,13 @@ export default class Window extends Component {
   resize (e) { this.props.resizeWindow(this.props.window.windowID, e.movementX, e.movementY) }
 
   componentDidMount () {
-    this.refs.decorations.addEventListener('mousedown', this.moveMouseDown, false)
-    this.refs.resize.addEventListener('mousedown', this.resizeMouseDown, false)
+    if (this.refs.decorations) { this.refs.decorations.addEventListener('mousedown', this.moveMouseDown, false) }
+    if (this.refs.resize) { this.refs.resize.addEventListener('mousedown', this.resizeMouseDown, false) }
     window.addEventListener('mouseup', this.moveMouseUp, false)
     window.addEventListener('mouseup', this.resizeMouseUp, false)
 
     setTimeout(() => this.props.showWindow(this.props.window.windowID), 50)
-    this.state.app.mount(this.refs.appMount)
+    if (this.state.app.mount) { this.state.app.mount(this.refs.appMount, this.props) }
   }
 
   componentWillUnmount () {
@@ -75,6 +79,19 @@ export default class Window extends Component {
 
   render () {
     const {x, y, height, width, windowID, isFocused, isVisable} = this.props.window
+
+    if (this.state.app.type === 'error') {
+      return (
+        <DialogWindow
+          app={this.state.app}
+          focusWindow={this.props.focusWindow}
+          windowID={windowID}
+          isFocused={isFocused}
+          isVisable={isVisable}
+        />
+      )
+    }
+
     return (
       <div
         className='window'

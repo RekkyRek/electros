@@ -6577,7 +6577,9 @@ var App = function () {
   }, {
     key: 'mount',
     value: function mount(mountElement) {
-      _reactDom2.default.render(_react2.default.createElement(this.component, null), mountElement);
+      var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      _reactDom2.default.render(_react2.default.createElement(this.component, props), mountElement);
     }
   }]);
 
@@ -6618,6 +6620,9 @@ var AppComponent = function (_Component) {
           ls.forEach(function (file) {
             output.stdout += file + ' ';
           });
+          break;
+        case 'run':
+          this.props.createWindow('/' + query.split(' ')[1] + '/');
           break;
         default:
           try {
@@ -26718,7 +26723,7 @@ exports = module.exports = __webpack_require__(84)(false);
 
 
 // module
-exports.push([module.i, ".terminalWindow {\n  backdrop-filter: blur(24px);\n  background: rgba(0, 0, 0, 0.66);\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%; }\n  .terminalWindow .terminalOutput {\n    flex: 1;\n    margin: 4px;\n    overflow-y: scroll;\n    color: #eeeeee; }\n    .terminalWindow .terminalOutput div {\n      margin: 4px; }\n    .terminalWindow .terminalOutput .terminalPWD {\n      color: #adadad; }\n    .terminalWindow .terminalOutput p {\n      font-size: 14px;\n      margin: 0px;\n      word-wrap: break-word;\n      word-break: break-word;\n      white-space: pre-wrap; }\n  .terminalWindow .terminalInput {\n    border: none;\n    padding: 4px;\n    background: rgba(0, 0, 0, 0.2);\n    color: #eeeeee;\n    display: flex;\n    transition: background 0.1s; }\n    .terminalWindow .terminalInput p {\n      margin: 0px;\n      font-size: 14px; }\n    .terminalWindow .terminalInput input {\n      border: none;\n      background: transparent;\n      flex: 1;\n      min-width: 0px;\n      margin-left: 6px;\n      color: #eeeeee; }\n      .terminalWindow .terminalInput input:focus {\n        outline: none; }\n", ""]);
+exports.push([module.i, ".terminalWindow {\n  backdrop-filter: blur(24px);\n  background: rgba(0, 0, 0, 0.66);\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  font-family: sans-serif; }\n  .terminalWindow .terminalOutput {\n    flex: 1;\n    margin: 4px;\n    overflow-y: scroll;\n    color: #eeeeee; }\n    .terminalWindow .terminalOutput div {\n      margin: 4px; }\n    .terminalWindow .terminalOutput .terminalPWD {\n      color: #adadad; }\n    .terminalWindow .terminalOutput p {\n      font-size: 14px;\n      margin: 0px;\n      word-wrap: break-word;\n      word-break: break-word;\n      white-space: pre-wrap; }\n  .terminalWindow .terminalInput {\n    border: none;\n    padding: 4px;\n    background: rgba(0, 0, 0, 0.2);\n    color: #eeeeee;\n    display: flex;\n    transition: background 0.1s; }\n    .terminalWindow .terminalInput p {\n      margin: 0px;\n      font-size: 14px; }\n    .terminalWindow .terminalInput input {\n      border: none;\n      background: transparent;\n      flex: 1;\n      min-width: 0px;\n      margin-left: 6px;\n      color: #eeeeee; }\n      .terminalWindow .terminalInput input:focus {\n        outline: none; }\n", ""]);
 
 // exports
 

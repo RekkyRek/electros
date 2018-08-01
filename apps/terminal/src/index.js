@@ -17,8 +17,8 @@ export default class App {
     console.log('hi from terminal')
   }
 
-  mount (mountElement) {
-    ReactDOM.render(<this.component />, mountElement)
+  mount (mountElement, props = {}) {
+    ReactDOM.render(<this.component {...props} />, mountElement)
   }
 }
 
@@ -44,6 +44,9 @@ class AppComponent extends Component {
       case 'ls':
         const ls = shell.ls('.')
         ls.forEach(file => { output.stdout += `${file} ` })
+        break
+      case 'run':
+        this.props.createWindow(`/${query.split(' ')[1]}/`)
         break
       default:
         try {
