@@ -10,7 +10,7 @@ export default class Tabs extends Component {
   componentDidMount () {
     console.log(this.chromeTabs, this.refs.tabs)
     this.chromeTabs.init(this.refs.tabs, {
-      tabOverlapDistance: 14,
+      tabOverlapDistance: 0,
       minWidth: 45,
       maxWidth: 243
     })
