@@ -161,7 +161,7 @@ app.on('activate', () => {
   }
 })
 
-app.setAppUserModelId('gg.rek.electros')
+app.setAppUserModelId('hampus.lundqvist.sprk')
 
 if (process.platform === 'darwin') {
   app.on('before-quit', () => {

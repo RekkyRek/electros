@@ -1,8 +1,18 @@
-# Redux Boilerplate
+# SPRKOS
+![Screenshot](https://i.imgur.com/nZtjmls.png)
 
-How to use:
-1. `git clone https://github.com/RekkyRek/redux-boilerplate.git && cd redux-boilerplate`
-2. `npm install`
-3. `npm run dev`
+This is just a fun project, not intended to be taken seriously.
 
-Routes are in `./src/containers/App.jsx` btw.
+Uses port 1469 to serve apps.
+Use the env var SPRK_APPS_LOCATION to set where apps should be loaded from, default: /sprk/apps
+And use SPRK_CONFIG_LOCATION to point to the config file, by default this is in /sprk/config.json
+
+Default config file:
+```json
+{
+  "startup": [],
+  "launcher": "/dock/"
+}
+```
+
+Run using `npm run start` to use default env vars and to start with webpack server.

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently -k \"npm run server\" \"npm run start\" ",
     "server": "webpack-dev-server --color --config webpack/dev.config.js --host 0.0.0.0 --port 3000",
-    "start": "NODE_ENV=development SPRK_CONFIG_LOCATION=/Volumes/BIG\\ NIGG/Code/electros/core/dist/config.json SPRK_APPS_LOCATION=/Volumes/BIG\\ NIGG/Code/electros/apps electron src/app.js"
+    "start": "NODE_ENV=development SPRK_CONFIG_LOCATION=/sprk/config.json SPRK_APPS_LOCATION=/sprk/apps electron src/app.js"
   },
   "repository": {
     "type": "git",
