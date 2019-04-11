@@ -30,7 +30,7 @@ class AppComponent extends Component {
   render () {
     return (
       <div className='templateWindow'>
-        <p>hi</p>
+        <p>Hello World!</p>
       </div>
     )
   }

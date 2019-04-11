@@ -11,7 +11,7 @@ export default class DialogWindow extends Component {
         className='window dialog'
         style={{
           zIndex: this.props.isFocused ? 3 : 2,
-          transform: this.props.isVisable ? 'translateY(0px)' : 'translateY(-24px)',
+          transform: this.props.isVisable ? 'translateY(8px)' : 'translateY(-24px)',
           opacity: this.props.isVisable ? 1 : 0
         }}
         onClick={() => this.props.focusWindow(this.props.windowID)}

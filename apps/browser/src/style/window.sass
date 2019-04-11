@@ -1,6 +1,4 @@
 .browserWindow
-  backdrop-filter: blur(24px)
-  background: rgba(255,255,255,0.66)
   flex: 1
   display: flex
   flex-direction: column
@@ -8,45 +6,5 @@
   height: 100%
   font-family: sans-serif
   overflow: hidden
-  .chrome-tabs-content
-    display: flex
-  .chrome-tab, .newtab
-    border-right: 1px solid rgba(0,0,0,0.1)
-    overflow: hidden
-    border-top: 2px solid transparent
-    &:hover
-      .chrome-tab-close
-        background: rgba(0,0,0,0.2)
-    .chrome-tab-title
-      padding: 6px
-      padding-top: 6px
-      text-overflow: ellipsis
-      overflow: hidden
-      padding-right: 18px
-    .chrome-tab-close
-      height: 12px
-      width: 12px
-      background: rgba(0,0,0,0.1)
-      position: absolute
-      top: 8px
-      right: 6px
-      border-radius: 100%
-      cursor: pointer
-      transition: background 0.1s
-      &:hover
-        .chrome-tab-close
-          background: rgba(0,0,0,0.3)
-  .chrome-tab-current
-    border-top: 2px solid #0095ff
-    .chrome-tab-title
-      padding-top: 6px
-  .chrome-tabs-bottom-bar
-    border-bottom: 1px solid rgba(0,0,0,0.1)
-  .chrome-tab-background
-    svg
-      display: none
-  .newtab
-    max-width: 23px
-    min-width: 23px
-    cursor: pointer
-    transform: translate3d(0px,0px,0px) !important
+  .webview
+    flex: 1

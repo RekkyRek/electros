@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 
 import './style/window.sass'
 
-import Tabs from './tabs.jsx'
-
 export default class App {
   constructor () {
     this.component = AppComponent
@@ -29,15 +27,10 @@ class AppComponent extends Component {
     }
   }
 
-  newTab () {
-    this.setState({ tabs: [...this.state.tabs, {url: 'https://start.duckduckgo.com/', title: 'DuckDuckGo'}] })
-    this.refs.tabs.chromeTabs.addTab({title: 'https://start.duckduckgo.com/'})
-  }
-
   render () {
     return (
       <div className='browserWindow'>
-        <Tabs ref='tabs' newTab={this.newTab.bind(this)} />
+        <webview className='webview' src='https://google.com' />
       </div>
     )
   }

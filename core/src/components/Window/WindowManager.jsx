@@ -16,7 +16,7 @@ export default class WindowManager extends Component {
             hideWindow={this.props.hideWindow}
             resizeWindow={this.props.resizeWindow}
             discardWindow={this.props.discardWindow}
-            window={{...this.props.windows[windowID], isFocused: this.props.currentFocus === windowID}}
+            window={{ ...this.props.windows[windowID], isFocused: this.props.currentFocus === windowID }}
           />
         })}
       </div>

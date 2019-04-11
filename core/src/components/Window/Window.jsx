@@ -6,6 +6,10 @@ export default class Window extends Component {
   constructor (props) {
     super(props)
 
+    this.state = {
+      moving: false
+    }
+
     this.moveMouseUp = this.moveMouseUp.bind(this)
     this.moveMouseDown = this.moveMouseDown.bind(this)
     this.move = this.move.bind(this)
@@ -19,7 +23,7 @@ export default class Window extends Component {
     try {
       App = __non_webpack_require__(`/Volumes/BIG NIGG/Code/electros/apps${this.props.window.appPath}bundle/index.js`).default // eslint-disable-line
     } catch (e) {
-      App = {type: 'error', title: 'Critical Error', message: e, buttons: [{name: 'Close', action: this.closeWindow.bind(this)}]}
+      App = { type: 'error', title: 'Critical Error', message: e, buttons: [{ name: 'Close', action: this.closeWindow.bind(this) }] }
     }
 
     this.state = {
@@ -27,8 +31,8 @@ export default class Window extends Component {
     }
   }
 
-  moveMouseUp () { window.removeEventListener('mousemove', this.move, true) }
-  moveMouseDown () { window.addEventListener('mousemove', this.move, true) }
+  moveMouseUp () { window.removeEventListener('mousemove', this.move, true); this.setState({ moving: false }) }
+  moveMouseDown () { window.addEventListener('mousemove', this.move, true); this.setState({ moving: true }) }
   move (e) { this.props.moveWindow(this.props.window.windowID, e.movementX, e.movementY) }
 
   resizeMouseUp () { window.removeEventListener('mousemove', this.resize, true) }
@@ -78,7 +82,7 @@ export default class Window extends Component {
   }
 
   render () {
-    const {x, y, height, width, windowID, isFocused, isVisable} = this.props.window
+    const { x, y, height, width, windowID, isFocused, isVisable, closed } = this.props.window
 
     if (this.state.app.type === 'error') {
       return (
@@ -92,17 +96,18 @@ export default class Window extends Component {
       )
     }
 
+    let translate = `translate3d(${x}px, ${y - (isVisable ? 0 : closed ? -24 : 24)}px, 0px)`
+
     return (
       <div
         className='window'
         style={{
           zIndex: isFocused ? 3 : 2,
-          left: x,
-          top: y,
           height,
           width,
-          transform: isVisable ? 'scale(1)' : 'scale(0.8)',
-          opacity: isVisable ? 1 : 0
+          transform: translate,
+          opacity: isVisable ? 1 : 0,
+          transition: this.state.moving ? 'none' : 'opacity 0.2s, transform 0.2s'
         }}
         onClick={() => this.props.focusWindow(windowID)}
         ref='window'

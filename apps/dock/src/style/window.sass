@@ -1,0 +1,36 @@
+.dockWindow
+  width: 100vw
+  position: fixed
+  bottom: 0px
+  display: flex
+  justify-content: center
+  transform: translateY(64px) translateZ(0px)
+  padding: 12px 0px
+  transition: transform 0.2s
+  &:hover
+    transform: translateY(6px) translateZ(0px)
+  .dockContainer
+    transform: translateZ(0px)
+    border-radius: 12px
+    height: 72px
+    transition: filter 0.15s
+  .dockItem
+    border: none
+    cursor: pointer
+    height: 72px
+    width: 72px
+    background: #fff
+    margin: 0px 4px
+    border-radius: 12px
+    padding: 0px
+    filter: drop-shadow(0px 0px 0px rgba(0,0,0,0))
+    transition: transform 0.1s, filter 0.2s
+    &:focus
+      outline: none
+    &:hover
+      transform: scale(1.1)
+      filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.33))
+    img
+      width: 64px
+      height: 64px
+      margin: 4px

@@ -748,7 +748,7 @@ var AppComponent = function (_Component) {
         _react2.default.createElement(
           'p',
           null,
-          'hi'
+          'Hello World!'
         )
       );
     }
@@ -20299,7 +20299,7 @@ exports = module.exports = __webpack_require__(26)(false);
 
 
 // module
-exports.push([module.i, ".templateWindow {\n  backdrop-filter: blur(24px);\n  background: rgba(255, 255, 255, 0.66);\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  font-family: sans-serif; }\n", ""]);
+exports.push([module.i, ".templateWindow {\n  padding: 0px 8px 8px 8px;\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  font-family: sans-serif; }\n", ""]);
 
 // exports
 

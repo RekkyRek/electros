@@ -3,16 +3,15 @@
   user-select: none
   display: flex
   flex-direction: column
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2)
+  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.33)
   opacity: 0
-  transform: scale(0.8)
-  transition: opacity 0.2s, transform 0.2s
+  background: #ffffff
+  border-radius: 12px
   .windowDecorations
     display: flex
     align-items: center
-    backdrop-filter: blur(24px)
-    background: rgba(255,255,255,0.33)
     z-index: 1
+    padding: 8px
     user-select: none
     .windowTitle
       margin: 6px
@@ -45,11 +44,14 @@
   .windowContent
     flex: 1
     display: flex
+    border-radius: 0px 0px 12px 12px
+    overflow: hidden
 .dialog
   width: 360px
   left: calc(50vw - 360px / 2)
   transform: translateY(-24px)
   overflow: hidden
+  transition: transform 0.2s, opacity 0.2s
   .windowTitle
     text-align: center
   .windowContent
@@ -66,5 +68,6 @@
       display: flex
       justify-content: flex-end
       button
-        background: rgba(0,0,0,0.05)
+        border-radius: 8px
+        border: 1px solid #eee
         margin: 0px
