@@ -43,7 +43,7 @@
     "webpack-dev-server": "^2.11.0"
   },
   "dependencies": {
-    "electron": "^2.0.5",
+    "electron": "^2.0.8",
     "express": "^4.16.3",
     "react": "^16.2.0",
     "react-addons-shallow-compare": "^15.6.2",
